@@ -1,0 +1,12 @@
+
+- name: Deploy public key
+  hosts: all
+  become: true
+  remote_user: "{{remote_username}}"
+
+  tasks:
+  - name: Set authorized key taken from file
+    authorized_key:
+      user: user7
+      state: present
+      key: "{{ lookup('file', '/home/user7/.ssh/id_rsa.pub') }}"

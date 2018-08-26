@@ -1,0 +1,28 @@
+  - name: Install packages
+    yum:
+      name: "{{ item }}"
+      state: latest
+    with_items:
+      - "{{ packages }}"
+
+  - name: check default python version
+    shell: "python --version 2>&1 | awk '{print $2}'"
+    register: python_installed_version
+    changed_when: false
+
+  - name: install python-devel
+    yum: name={{ item }}  state=present
+    with_items: [ "python-devel", "gcc" ]
+    when: python_installed_version.stdout | version_compare('3.0', '<')
+
+#  - name: copy requirements.txt
+#    copy:
+#      src: /home/user7/playbooks/requirements.txt
+#      dest: /home/user7/requirements.txt
+#      owner: user7
+#      group: user7
+#      mode: u=rw,g=r,o=r
+
+#  - name: Install requirements.txt
+#    pip:
+#      requirements: /home/user7/requirements.txt

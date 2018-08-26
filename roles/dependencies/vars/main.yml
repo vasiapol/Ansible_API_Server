@@ -1,0 +1,6 @@
+packages:
+  - epel-release
+  - git
+  - python-pip
+
+remote_username: user7

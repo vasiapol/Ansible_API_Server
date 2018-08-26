@@ -1,0 +1,6 @@
+- name: API_dependecies
+  hosts: all
+  become: true
+  remote_user: "{{ remote_username }}"
+  roles:
+    - common
