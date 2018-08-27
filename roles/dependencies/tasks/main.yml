@@ -5,6 +5,11 @@
     with_items:
       - "{{ packages }}"
 
+  - name: Install python-pip
+    yum:
+      name: python-pip
+      state: latest
+
   - name: check default python version
     shell: "python --version 2>&1 | awk '{print $2}'"
     register: python_installed_version
@@ -13,7 +18,7 @@
   - name: install python-devel
     yum: name={{ item }}  state=present
     with_items: [ "python-devel", "gcc" ]
-    when: python_installed_version.stdout | version_compare('3.0', '<')
+    when: python_installed_version.stdout is version_compare('3.0', '<')
 
 #  - name: copy requirements.txt
 #    copy:

@@ -1,7 +1,2 @@
-packages:
-  - epel-release
-  - git
-  - python-pip
-
 remote_username: user7
-current_user: $USER
+current_user: user7
