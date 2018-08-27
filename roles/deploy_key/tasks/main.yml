@@ -1,5 +1,5 @@
   - name: Set authorized key taken from file
     authorized_key:
-      user: "{{ current_user }}"
+      user: "{{ remote_username }}"
       state: present
-      key: "{{ lookup('file', '/home/user7/.ssh/id_rsa.pub') }}"
+      key: "{{ lookup('file', '/home/{{ current_user }}/.ssh/id_rsa.pub') }}"

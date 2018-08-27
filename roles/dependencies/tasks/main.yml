@@ -20,14 +20,17 @@
     with_items: [ "python-devel", "gcc" ]
     when: python_installed_version.stdout is version_compare('3.0', '<')
 
-#  - name: copy requirements.txt
-#    copy:
-#      src: /home/user7/playbooks/requirements.txt
-#      dest: /home/user7/requirements.txt
-#      owner: user7
-#      group: user7
-#      mode: u=rw,g=r,o=r
+  - name: create workdir if doesn`t exist
+    file:
+      path: "{{ working_directory }}"
+      state: directory
+      mode: 0755
 
-#  - name: Install requirements.txt
-#    pip:
-#      requirements: /home/user7/requirements.txt
+  - name: render template
+    template:
+      src: requirements.txt.j2
+      dest: "{{ working_directory }}/requirements.txt"
+
+  - name: Install requirements.txt
+    pip:
+      requirements: "{{ working_directory }}/requirements.txt"

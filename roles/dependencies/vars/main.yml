@@ -3,3 +3,5 @@ packages:
   - git
 
 remote_username: user7
+
+working_directory: ~/API
