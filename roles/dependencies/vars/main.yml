@@ -4,4 +4,4 @@ packages:
 
 remote_username: user7
 
-working_directory: ~/API
+working_directory: /home/user7/API

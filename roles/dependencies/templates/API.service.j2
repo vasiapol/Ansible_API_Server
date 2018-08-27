@@ -1,0 +1,10 @@
+[Unit]
+Description=API
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python {{working_directory}}/API_Server_Demo/API.py
+WorkingDirectory={{working_directory}}/API_Server_Demo/
+
+[Install]
+WantedBy=multi-user.target

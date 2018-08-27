@@ -34,3 +34,35 @@
   - name: Install requirements.txt
     pip:
       requirements: "{{ working_directory }}/requirements.txt"
+
+  - name: clone src repo
+    git:
+      repo: 'http://192.168.103.236:3000/Lv-335.DevOps/API_Server_Demo.git'
+      dest: "{{ working_directory }}/API_Server_Demo"
+      update: no
+
+  - name: create a service file to run python as a deamon
+    template:
+      src: API.service.j2
+      dest: /lib/systemd/system/API.service
+
+  - name: add firewall rule
+    firewalld:
+      port: 5000/tcp
+      permanent: true
+      state: enabled
+
+  - name: reload firewalld
+    systemd:
+        name: firewalld
+        state: reloaded
+
+  - name: reload systemd
+    systemd:
+      daemon_reload: yes
+
+  - name: enable and start API service
+    systemd:
+      name: API
+      state: started
+      enabled: yes
