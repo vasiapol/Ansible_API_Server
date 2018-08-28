@@ -24,7 +24,8 @@
     file:
       path: "{{ working_directory }}"
       state: directory
-      mode: 0775
+      owner: "{{ remote_username}}"
+      mode: 0755
 
   - name: render template
     template:
