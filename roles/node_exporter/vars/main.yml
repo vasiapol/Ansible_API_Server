@@ -1,0 +1,7 @@
+node_explorer_url: https://github.com/prometheus/node_exporter/releases/download/v0.16.0/node_exporter-0.16.0.linux-amd64.tar.gz
+
+remote_username: user7
+
+working_directory: /home/user7/
+
+node_explorer_path: /home/user7/node_exporter-0.16.0.linux-amd64/

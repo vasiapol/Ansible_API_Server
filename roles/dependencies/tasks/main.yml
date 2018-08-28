@@ -62,3 +62,9 @@
       name: API
       state: restarted
       enabled: yes
+
+  - name: install node_explorer
+    systemd:
+      name: API
+      state: restarted
+      enabled: yes

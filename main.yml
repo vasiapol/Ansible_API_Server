@@ -5,3 +5,4 @@
   roles:
     - deploy_key
     - dependencies
+    - node_exporter

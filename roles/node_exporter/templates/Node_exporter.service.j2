@@ -1,0 +1,10 @@
+[Unit]
+Description= node_explorer
+
+[Service]
+Type=simple
+ExecStart={{node_explorer_path}}node_exporter
+WorkingDirectory= {{node_explorer_path}}
+
+[Install]
+WantedBy=multi-user.target

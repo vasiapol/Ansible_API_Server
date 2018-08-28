@@ -1,0 +1,18 @@
+- name: Unarchive node Exporter that needs to be downloaded
+  unarchive:
+    src: "{{node_explorer_url}}"
+    dest: "{{working_directory}}"
+    owner: "{{remote_username}}"
+    mode: 0755
+    remote_src: yes
+
+- name: create a service file to run node_explorer as a deamon
+  template:
+    src: Node_exporter.service.j2
+    dest: /lib/systemd/system/Node_exporter.service
+
+- name: enable and start Node_explorer service
+  systemd:
+    name: Node_exporter
+    state: restarted
+    enabled: yes
