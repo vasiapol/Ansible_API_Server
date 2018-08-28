@@ -40,7 +40,7 @@
     git:
       repo: 'http://192.168.103.236:3000/Lv-335.DevOps/API_Server_Demo.git'
       dest: "{{ working_directory }}/API_Server_Demo"
-      version: f_prometheus
+      version: "{{branch_name}}""
 
   - name: create a service file to run python as a deamon
     template:
