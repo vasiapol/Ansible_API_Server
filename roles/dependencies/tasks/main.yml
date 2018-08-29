@@ -42,6 +42,14 @@
       dest: "{{ working_directory }}/API_Server_Demo"
       version: "{{branch_name}}"
 
+  - name: fix folder permissions
+    file:
+        path: "{{ working_directory }}"
+        state: directory
+        owner: "{{ remote_username}}"
+        mode: 0755
+        recurse: yes
+
   - name: create a service file to run python as a deamon
     template:
       src: API.service.j2
