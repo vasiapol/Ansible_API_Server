@@ -1,7 +1,6 @@
 - name: API_Server
   hosts: all
   become: yes
-  # become_user: "{{ remote_username }}"
   remote_user: "{{ remote_username }}"
   roles:
     - deploy_key
